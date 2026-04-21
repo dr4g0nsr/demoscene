@@ -4,12 +4,13 @@
         "cscope.out": true,
         "tags": true
     },
-    "C_Cpp.errorSquiggles": "Disabled",
+    "C_Cpp.errorSquiggles": "disabled",
     "task.autoDetect": "off",
     "debug.openDebug": "openOnSessionStart",
 
     // Choose effect to build. Use the current opened file's folder name
     // to identify the effect or specify the exact effect name.
     // "effect": "${fileDirnameBasename}",
-    "effect": "anim",
+    // "effect": "anim",
+    "effect": "${fileDirnameBasename}",
 }
