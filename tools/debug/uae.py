@@ -49,6 +49,12 @@ def ParseStatusRegister(line):
     SR_LO = '000{}{}{}{}{}'.format(X, N, Z, V, C)
     return int(SR_HI + SR_LO, 2)
 
+def is_hex(s):
+    try:
+        int(s, 16)
+        return True
+    except ValueError:
+        return False
 
 def ParseProcessorState(lines):
     regs = Registers()
@@ -67,6 +73,8 @@ def ParseProcessorState(lines):
     while not lines[0].startswith('T='):
         fs = lines.pop(0).split()
         for n, v in zip(fs[0::2], fs[1::2]):
+            if not is_hex(v):
+                continue
             regs[n] = int(v, 16)
 
     # We are at line starting with 'T=' so read Status Register.
